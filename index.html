@@ -56,29 +56,19 @@
     letter-spacing:-0.3px;
   }
 
-  /* ---------- Horizontal timeline spine ---------- */
-  .spine{
-    position:relative;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    column-gap:24px;
-    margin-bottom:8px;
-  }
-  .spine::before{
-    content:"";
-    position:absolute;
-    top:21px;
-    left:calc(12.5% - 2px);
-    right:calc(12.5% - 2px);
-    height:2px;
-    background:linear-gradient(90deg, rgba(201,168,76,0.08), #c9a84c 15%, #c9a84c 85%, rgba(201,168,76,0.08));
-  }
+  /* ---------- Vertical timeline node ---------- */
   .node{
     position:relative;
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:14px;
+  }
+  .connector{
+    width:2px;
+    height:32px;
+    background:linear-gradient(#c9a84c, rgba(201,168,76,0.15));
+    margin:0 auto;
   }
   .node-dot{
     width:44px;
@@ -102,21 +92,16 @@
     color:#f5f7ff;
     letter-spacing:0.2px;
   }
-  .node::after{
-    content:"";
-    width:2px;
-    height:28px;
-    background:linear-gradient(#c9a84c, rgba(201,168,76,0));
-  }
 
-  /* ---------- Month columns ---------- */
+  /* ---------- Month lanes (stacked) ---------- */
   .board{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    column-gap:24px;
-    align-items:start;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
   }
   .lane{
+    width:100%;
+    margin-top:0;
     border:1px solid rgba(255,255,255,0.08);
     border-top:3px solid #c9a84c;
     border-radius:4px 4px 12px 12px;
@@ -134,8 +119,8 @@
     border-bottom:1px solid rgba(255,255,255,0.08);
   }
   .cards{
-    display:flex;
-    flex-direction:column;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
     gap:12px;
   }
   .card{
@@ -146,7 +131,7 @@
     border:1px solid rgba(255,255,255,0.06);
     border-radius:8px;
     padding:14px 16px 16px;
-    min-height:136px;
+    min-height:118px;
     transition:border-color 0.2s ease, background 0.2s ease;
   }
   .card:hover{
@@ -206,14 +191,10 @@
 
   @media (max-width:900px){
     .wrap{padding:48px 24px 64px;}
-    .spine{grid-template-columns:repeat(2,1fr); row-gap:36px;}
-    .spine::before{display:none;}
-    .node::after{display:none;}
-    .board{grid-template-columns:repeat(2,1fr); row-gap:20px;}
+    .cards{grid-template-columns:repeat(2,1fr);}
   }
   @media (max-width:560px){
-    .spine{grid-template-columns:1fr; row-gap:28px;}
-    .board{grid-template-columns:1fr; row-gap:20px;}
+    .cards{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -229,30 +210,17 @@
     <h1>Diego's English Plan</h1>
   </header>
 
-  <div class="spine">
-    <div class="node">
-      <div class="node-dot">1</div>
-      <div class="node-label">Month 1</div>
-    </div>
-    <div class="node">
-      <div class="node-dot">2</div>
-      <div class="node-label">Month 2</div>
-    </div>
-    <div class="node">
-      <div class="node-dot">3</div>
-      <div class="node-label">Month 3</div>
-    </div>
-    <div class="node">
-      <div class="node-dot">4</div>
-      <div class="node-label">Month 4</div>
-    </div>
-  </div>
-
   <div class="board">
 
+    <div class="node">
+      <div class="node-dot">1</div>
+      <div class="node-label">October</div>
+    </div>
+    <div class="connector"></div>
+
     <div class="lane">
-      <div class="lane-label">Month 1</div>
-      <div class="cards">
+      <div class="lane-label">October</div>
+      <div class="cards" style="grid-template-columns:repeat(3,1fr);">
         <div class="card">
           <div class="wk"><div class="wk-t">Week</div><div class="wk-n">1</div></div>
           <div>
@@ -277,9 +245,16 @@
       </div>
     </div>
 
+    <div class="connector"></div>
+    <div class="node">
+      <div class="node-dot">2</div>
+      <div class="node-label">November</div>
+    </div>
+    <div class="connector"></div>
+
     <div class="lane">
-      <div class="lane-label">Month 2</div>
-      <div class="cards">
+      <div class="lane-label">November</div>
+      <div class="cards" style="grid-template-columns:repeat(3,1fr);">
         <div class="card">
           <div class="wk"><div class="wk-t">Week</div><div class="wk-n">1</div></div>
           <div>
@@ -304,9 +279,16 @@
       </div>
     </div>
 
+    <div class="connector"></div>
+    <div class="node">
+      <div class="node-dot">3</div>
+      <div class="node-label">December</div>
+    </div>
+    <div class="connector"></div>
+
     <div class="lane">
-      <div class="lane-label">Month 3</div>
-      <div class="cards">
+      <div class="lane-label">December</div>
+      <div class="cards" style="grid-template-columns:repeat(3,1fr);">
         <div class="card">
           <div class="wk"><div class="wk-t">Week</div><div class="wk-n">1</div></div>
           <div>
@@ -331,9 +313,16 @@
       </div>
     </div>
 
+    <div class="connector"></div>
+    <div class="node">
+      <div class="node-dot">4</div>
+      <div class="node-label">January</div>
+    </div>
+    <div class="connector"></div>
+
     <div class="lane">
-      <div class="lane-label">Month 4</div>
-      <div class="cards">
+      <div class="lane-label">January</div>
+      <div class="cards" style="grid-template-columns:repeat(2,1fr);">
         <div class="card">
           <div class="wk"><div class="wk-t">Week</div><div class="wk-n">1</div></div>
           <div>
