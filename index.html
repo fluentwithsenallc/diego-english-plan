@@ -123,6 +123,8 @@
     grid-template-columns:repeat(4,1fr);
     gap:12px;
   }
+  .cards.cols-3{grid-template-columns:repeat(3,1fr);}
+  .cards.cols-2{grid-template-columns:repeat(2,1fr);}
   .card{
     display:grid;
     grid-template-columns:34px 1fr;
@@ -189,12 +191,14 @@
     letter-spacing:0.5px;
   }
 
+  .card{min-width:0;}
+
   @media (max-width:900px){
     .wrap{padding:48px 24px 64px;}
-    .cards{grid-template-columns:repeat(2,1fr);}
+    .cards, .cards.cols-3, .cards.cols-2{grid-template-columns:repeat(2,1fr);}
   }
   @media (max-width:560px){
-    .cards{grid-template-columns:1fr;}
+    .cards, .cards.cols-3, .cards.cols-2{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -220,7 +224,7 @@
 
     <div class="lane">
       <div class="lane-label">October</div>
-      <div class="cards" style="grid-template-columns:repeat(3,1fr);">
+      <div class="cards cols-3">
         <div class="card">
           <div class="wk"><div class="wk-t">Week</div><div class="wk-n">1</div></div>
           <div>
@@ -254,7 +258,7 @@
 
     <div class="lane">
       <div class="lane-label">November</div>
-      <div class="cards" style="grid-template-columns:repeat(3,1fr);">
+      <div class="cards cols-3">
         <div class="card">
           <div class="wk"><div class="wk-t">Week</div><div class="wk-n">1</div></div>
           <div>
@@ -288,7 +292,7 @@
 
     <div class="lane">
       <div class="lane-label">December</div>
-      <div class="cards" style="grid-template-columns:repeat(3,1fr);">
+      <div class="cards cols-3">
         <div class="card">
           <div class="wk"><div class="wk-t">Week</div><div class="wk-n">1</div></div>
           <div>
@@ -322,7 +326,7 @@
 
     <div class="lane">
       <div class="lane-label">January</div>
-      <div class="cards" style="grid-template-columns:repeat(2,1fr);">
+      <div class="cards cols-2">
         <div class="card">
           <div class="wk"><div class="wk-t">Week</div><div class="wk-n">1</div></div>
           <div>
